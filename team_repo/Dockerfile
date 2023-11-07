@@ -2,7 +2,7 @@
 FROM cts-api:latest
 
 # Install Go and any other dependencies required for the Go test environment
-RUN apt-get update && apt-get install -y golang-go
+RUN apt-get update && apt-get install -y golang-go && apt-get install -y jq
 
 # Set up the environment for Go
 ENV GOPATH /go

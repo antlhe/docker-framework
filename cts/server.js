@@ -21,12 +21,22 @@ app.post('/sendToAmplitude', (req, res) => {
   res.json({ message: 'Data sent to Amplitude' });
 });
 
-// Mock goConvertTestResults
-app.post('/goConvertTestResults', (req, res) => {
+// Mock convertTestResults
+app.post('/convertTestResults', (req, res) => {
   console.log('Converting test results:', req.body);
-  // Mock conversion here...
-  res.json({ message: 'Test results converted' });
+
+  // Mock conversion logic
+  const mockConvertedResult = {
+    summary: 'All tests passed.',
+    totalTests: 10,
+    passed: 10,
+    failed: 0
+  };
+
+  // Send the mock converted result back
+  res.json(mockConvertedResult);
 });
+
 
 const port = 3000;
 app.listen(port, () => {
