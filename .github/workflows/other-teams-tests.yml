@@ -1,0 +1,34 @@
+name: Pull and Test Other Teams' Docker Images
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  pull-and-run-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        team: [teamA, teamB, teamC]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Repository
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+
+      - name: Pull the Docker image for ${{ matrix.team }}
+        run: docker pull registry.example.com/${{ matrix.team }}/extended-image:latest
+      
+      - name: Run tests in the Docker image for ${{ matrix.team }}
+        run: docker run --rm registry.example.com/${{ matrix.team }}/extended-image:latest
+      
+      - name: Notify success/failure (optional)
+        if: always()
+        run: echo "Tests for ${{ matrix.team }} completed with status ${{ job.status }}"
