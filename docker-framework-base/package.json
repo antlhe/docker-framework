@@ -1,5 +1,5 @@
 {
-  "name": "cts-api",
+  "name": "docker-framework",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {

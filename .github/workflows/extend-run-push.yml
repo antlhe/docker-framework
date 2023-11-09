@@ -21,8 +21,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
 
-      - name: Pull the latest CTS base image
-        run: docker pull registry.example.com/cts/base-image:latest
+      - name: Pull the latest docker-framework base image
+        run: docker pull registry.example.com/docker-framework/base-image:latest
 
       - name: Build Docker image
         run: docker build --pull -t registry.example.com/myteam/extended-image:latest .

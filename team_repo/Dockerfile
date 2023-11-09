@@ -1,5 +1,5 @@
-# Start from the base CTS image
-FROM cts-api:latest
+# Start from the base docker-framework base image
+FROM docker-framework:latest
 
 # Install Go and any other dependencies required for the Go test environment
 RUN apt-get update && apt-get install -y golang-go
