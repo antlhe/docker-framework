@@ -1,4 +1,4 @@
-name: CI Build, Test, and Push
+name: Extend Base Image, Run Test, and Push to Docker Repo
 
 on:
   push:
