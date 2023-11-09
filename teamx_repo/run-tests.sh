@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# Start the RESTful API server in the background
 node /usr/src/app/server.js &
-
-# Wait for the server to start
 sleep 2
 
 # Run the Go tests and convert them into a JUnit XML report
