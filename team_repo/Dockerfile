@@ -2,7 +2,7 @@
 FROM cts-api:latest
 
 # Install Go and any other dependencies required for the Go test environment
-RUN apt-get update && apt-get install -y golang-go && apt-get install -y jq
+RUN apt-get update && apt-get install -y golang-go
 
 # Set up the environment for Go
 ENV GOPATH /go
@@ -14,6 +14,9 @@ COPY . .
 
 # Fetch Go dependencies (if any)
 RUN go get -d -v
+
+# Install go-junit-report without enabling Go modules
+RUN go get -u github.com/jstemmer/go-junit-report
 
 # Script to start the API and run tests
 COPY run-tests.sh /usr/src/app/run-tests.sh
