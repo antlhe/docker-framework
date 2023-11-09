@@ -17,15 +17,16 @@ app.post('/createOrg', (req, res) => {
 });
 
 app.post('/sendToAmplitude', (req, res) => {
-  if (req.headers['content-type'] === 'text/xml') {
+  if (req.headers['content-type'] === 'text/xml' || req.headers['content-type'] === 'application/xml') {
     console.log('Receiving XML data...');
     console.log('Sending data to Amplitude:', req.body);
 
+    res.status(200).send({ message: 'XML data sent to Amplitude' });
   } else {
-    console.log('Sending data to Amplitude:', req.body);
+    res.status(400).send({ error: 'Invalid content type. This endpoint only accepts XML data.' });
   }
-  res.json({ message: 'Data sent to Amplitude' });
 });
+
 
 const port = 3000;
 app.listen(port, () => {
