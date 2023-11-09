@@ -1,10 +1,13 @@
 # Docker framework
 ## Instructions
 ```
+// Build base image
 cd docker-framework-base
 docker build -f Dockerfile.base -t docker-framework:latest .
 cd -
-cd team_repo
+
+// Build extended image and run tests
+cd teamx_repo
 docker build -t team-test-image:latest .
 docker run --rm team-test-image:latest
 ```
